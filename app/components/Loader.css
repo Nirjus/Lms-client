@@ -1,0 +1,12 @@
+.loader {
+    border: 6px solid #19cec6; /* Set border color */
+    border-top: 6px solid #3860f1; /* Set top border color */
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation: spin 0.5s linear infinite;
+    }
+    @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }

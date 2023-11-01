@@ -15,13 +15,69 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
 }
+/* Firefox */
+input[type="number"] {
+-moz-appearance: textfield;
+}
+
+  .hero_animation {
+  background-image: linear-gradient(147.92deg, hsla(239, 76%, 53%, 0.456) 10.41%, hsla(0, 0%, 100%, 0) 89.25%);
+  animation: changeBackgroundColor 8s infinite;
+  border-radius: 50%;
+  }
+  @keyframes changeBackgroundColor {
+  0%, 100% {
+  opacity: 1;
+  
+  }
+  16.67% {
+  opacity: 0.9;
+  
+  }
+  33.33% {
+  opacity: 0.8;
+ 
+  }
+  50% {
+  opacity: 0.6;
+  
+  }
+  66.67% {
+  opacity: 0.5;
+  
+  }
+  83.33% {
+  opacity: 0.4;
+ 
+  }
+}
+
+@keyframes shake {
+  0% {
+  transform: translateX(0);
+  }
+  20% {
+  transform: translateX(-2px);
+  }
+  40% {
+  transform: translateX(2px);
+  }
+  60% {
+  transform: translateX(-2px);
+  }
+  80%{
+  transform: translatex(2px);
+  }
+  100% {
+  transform: translateX(0);
+  }
+  }
+  .shake {
+  animation: shake 0.5s ease-in-out;
+  }
