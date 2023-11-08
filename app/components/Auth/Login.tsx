@@ -89,13 +89,13 @@ const Login: React.FC<Props> = ({setRoute,setOpen}) => {
           />
           {!show ? (
             <AiOutlineEyeInvisible
-              className="absolute bottom-2 right-2 z-1 cursor-pointer"
+              className="absolute bottom-2 right-2 z-1 cursor-pointer text-black dark:text-white"
               size={25}
               onClick={() => setShow(true)}
             />
           ) : (
             <AiOutlineEye
-              className="absolute bottom-2 right-2 z-1 cursor-pointer"
+              className="absolute bottom-2 right-2 z-1 cursor-pointer text-black dark:text-white"
               size={25}
               onClick={() => setShow(false)}
             />
@@ -106,7 +106,7 @@ const Login: React.FC<Props> = ({setRoute,setOpen}) => {
           )}
        
         <div className=" w-full my-5">
-        <button type="submit" className="btn btn-primary w-full rounded-full">Sign in</button>
+        <button type="submit" className={`${style.button}`}>Sign in</button>
 
         </div>
         <h5 className=" text-center pt-4 font-Poppins font-[600] dark:font-[400] text-[14px] text-black dark:text-white">
@@ -116,11 +116,11 @@ const Login: React.FC<Props> = ({setRoute,setOpen}) => {
           <FcGoogle size={35} className=" cursor-pointer shadow-inner active:shadow-gray-600  rounded-full"
           onClick={() => signIn("google")}
           />
-          <AiFillGithub size={35} className=" cursor-pointer shadow-inner active:shadow-gray-600 rounded-full"
+          <AiFillGithub size={35} className=" cursor-pointer shadow-inner active:shadow-gray-600 rounded-full text-black dark:text-white"
           onClick={() => signIn("github")}
           />
         </div>
-        <h5 className=" text-center pt-4 font-Poppins text-[14px] font-[500]">
+        <h5 className=" text-center pt-4 font-Poppins text-[14px] font-[500] text-black dark:text-white">
       Not have any account?
       <span className=" text-[#2190ff] pl-1 cursor-pointer" onClick={() =>setRoute("Sign-Up")}>
         Sign up

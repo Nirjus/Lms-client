@@ -1,26 +1,22 @@
 "use client";
+import { useTheme } from "next-themes";
 import React from "react";
 
 type Props = {};
 
 const ThemeSwitcher = (props: Props) => {
-    let initialTheme;
-    try {
-        initialTheme = localStorage.getItem('theme') || 'light';
-    } catch (error) {
-        // Handle the error, e.g., fall back to a default theme
-        initialTheme = 'light';
-    }
-    const [theme, setTheme] = React.useState(initialTheme);
+
+     const {theme, setTheme}= useTheme();
+     const [mounted, setMounted] = React.useState(false);
+     
     const toggleTheme = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
     }
     React.useEffect(() => {
-        localStorage.setItem('theme',theme!);
-        const localTheme = localStorage.getItem('theme');
-        document.querySelector('html')?.setAttribute('data-theme',localTheme!);
+        setMounted(true);
     },[theme]);
-
+    
+    if(!mounted){return null}
   return (
     <div>
       <label className="swap swap-rotate">
@@ -29,7 +25,7 @@ const ThemeSwitcher = (props: Props) => {
 
         {/* sun icon */}
         <svg
-          className="swap-on fill-current w-10 h-10"
+          className="swap-on  w-10 h-10 dark:fill-white fill-black"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -38,7 +34,7 @@ const ThemeSwitcher = (props: Props) => {
 
         {/* moon icon */}
         <svg
-          className="swap-off fill-current w-10 h-10"
+          className="swap-off dark:fill-white fill-black w-10 h-10"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >

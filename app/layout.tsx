@@ -8,6 +8,7 @@ import {Providers} from "./Provider"
 import {SessionProvider} from "next-auth/react"
 import { useLoadUserQuery } from '@/redux/features/api/apiSlice';
 import Loader from  "./components/Loader";
+import { ThemeProvider } from 'next-themes';
 
 const poppins = Poppins({ subsets: ['latin'], weight:["300","400","500","600","700"],variable:"--font-Poppins" });
 const josefin = Josefin_Sans({ subsets: ['latin'], weight:["300","400","500","600","700"],variable:"--font-Josefin" });
@@ -20,9 +21,10 @@ export default function RootLayout({
 }) {
  
   return (
-    <html lang="en" data-theme>
+    <html lang="en">
       <body className={`${poppins.variable} ${josefin.variable} !bg-white bg-no-repeat dark:bg-gradient-to-b dark:from-gray-900 dark:to-black duration-300`} >
-        <Providers>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <Providers>
           <SessionProvider>
           <Custom>{children}</Custom>
          <ToastContainer 
@@ -31,6 +33,7 @@ export default function RootLayout({
          />
          </SessionProvider>
         </Providers>
+      </ThemeProvider>
       </body>
     </html>
   )

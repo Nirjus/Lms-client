@@ -6,7 +6,7 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode:["class",'[data-theme="dark"]'],
+ darkMode:["class"],
   theme: {
     extend: {
       fontFamily:{
@@ -29,11 +29,6 @@ const config: Config = {
            },
     },
   },
- 
-  plugins: [require("daisyui")],
-  daisyui: {
-    themes: ['light', 'dark'],
-     
-  },
+ plugins: [],
 }
 export default config

@@ -105,7 +105,7 @@ const Verification:React.FC<Props> = ({setRoute}) => {
         <br />
         <br />
         <div className="w-full flex justify-center">
-          <button className=' btn dark:btn-primary btn-success text-white rounded-full w-[80%]' onClick={verificationHandler}>
+          <button className={` ${style.button} !w-[80%]`} onClick={verificationHandler}>
          Verify OTP
           </button>
         </div>

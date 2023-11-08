@@ -113,13 +113,13 @@ const SignUp: React.FC<Props> = ({setRoute}) => {
           />
           {!show ? (
             <AiOutlineEyeInvisible
-              className="absolute bottom-2 right-2 z-1 cursor-pointer"
+              className="absolute bottom-2 right-2 z-1 cursor-pointer text-black dark:text-white"
               size={25}
               onClick={() => setShow(true)}
             />
           ) : (
             <AiOutlineEye
-              className="absolute bottom-2 right-2 z-1 cursor-pointer"
+              className="absolute bottom-2 right-2 z-1 cursor-pointer text-black dark:text-white"
               size={25}
               onClick={() => setShow(false)}
             />
@@ -130,7 +130,7 @@ const SignUp: React.FC<Props> = ({setRoute}) => {
             <span className=" text-red-500 pt-2 block">{errors.password}</span>
           )}
         <div className=" w-full my-5">
-            <button type="submit" className="btn btn-primary w-full rounded-full">Sign Up</button>
+            <button type="submit" className={style.button}>Sign Up</button>
         </div>
         <h5 className=" text-center pt-4 font-Poppins font-[600] dark:font-[400] text-[14px] text-black dark:text-white">
            -- or join with --
@@ -139,11 +139,11 @@ const SignUp: React.FC<Props> = ({setRoute}) => {
         <FcGoogle size={35} className=" cursor-pointer shadow-inner active:shadow-gray-600  rounded-full"
           onClick={() => signIn("google")}
           />
-          <AiFillGithub size={35} className=" cursor-pointer shadow-inner active:shadow-gray-600 rounded-full"
+          <AiFillGithub size={35} className=" cursor-pointer shadow-inner active:shadow-gray-600 rounded-full text-black dark:text-white"
           onClick={() => signIn("github")}
           />
              </div>
-        <h5 className=" text-center pt-4 font-Poppins text-[14px] font-[500]">
+        <h5 className=" text-center pt-4 font-Poppins text-[14px] font-[500] text-black dark:text-white">
       Already have an account?
       <span className=" text-[#2190ff] pl-1 cursor-pointer" onClick={() =>setRoute("Login")}>
         Sign In
