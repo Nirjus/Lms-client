@@ -13,12 +13,12 @@ const page = (props: Props) => {
        <Heading title="ALASKA - Admin" 
          description="One stop e-learning platform" keyword="Programming,Science,Sanatan dharma"
         />
-       <div className="flex h-[200vh]">
+       <div className="flex min-h-screen h-auto">
                     <div className="w-1/5 1500px:w-[16%]">
                         <AdminSidebar />
                     </div>
                     <div className="w-[85%]">
-                        <DashboardHero />
+                        <DashboardHero isDashboard={true}/>
                     </div>
        </div>
        </AdminProtected>

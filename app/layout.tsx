@@ -29,7 +29,7 @@ export default function RootLayout({
           <Custom>{children}</Custom>
          <ToastContainer 
           position="top-center"
-          theme="dark"
+          theme="colored"
          />
          </SessionProvider>
         </Providers>

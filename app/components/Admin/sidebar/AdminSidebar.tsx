@@ -226,7 +226,7 @@ const Sidebar = () => {
             />
             <Item
               title="FAQ"
-              to="/faq"
+              to="/admin/faq"
               icon={<QuizIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -273,7 +273,13 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-
+           <Item
+              title="Users Analytics"
+              to="/admin/users-analytics"
+              icon={<ManageHistoryIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
             <Typography
               variant="h6"
               className="!text-[18px] text-black dark:text-[#ffffffc1] capitalize !font-[400]"
@@ -281,13 +287,6 @@ const Sidebar = () => {
             >
               {!isCollapsed && "Extras"}
             </Typography>
-            <Item
-              title="Settings"
-              to="/admin/settings"
-              icon={<SettingsIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
             <div onClick={logoutHandler}>
               <Item
                 title="Logut"
