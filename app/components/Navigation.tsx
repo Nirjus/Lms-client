@@ -81,7 +81,7 @@ const Navigation: React.FC<Props> = ({ activeItem }) => {
  
   return (
     <div
-      className={`items-center p-2 flex !w-[95%] mx-auto bg-opacity-90 dark:bg-opacity-95 bg-[#fcfcfc] dark:bg-[#212121ea] rounded-[20px] shadow-xl border-b border-b-gray-200 dark:border-b-gray-900`}
+      className={`items-center p-2 flex !w-[95%] mx-auto bg-[#f6f6f6f3] dark:bg-[#131322f0] rounded-[20px] shadow-xl dark:shadow-lg dark:shadow-[#000000bc] `}
     >
       <div className="flex-1">
         <Link className=" text-[30px] pl-3 hover:text-[#2a7fe0] dark:hover:text-[#2a7fe0] dark:text-white text-[#151515] font-[600]" href={"/"}>
@@ -96,14 +96,14 @@ const Navigation: React.FC<Props> = ({ activeItem }) => {
                 href={i.url}
                 key={index}
                 passHref
-                className=" px-3 py-3 dark:hover:bg-[#09090982] hover:bg-[#12121222] rounded-[10px] duration-500"
+                className={` p-2 m-1`}
               >
                 <span
                   className={`${
                     activeItem === index
                       ? " dark:text-[#37a39a] text-[crimson]"
                       : "dark:text-white text-black"
-                  } text-[17px] px-3 font-Poppins font-[400]`}
+                  } text-[17px] px-3 font-Poppins font-[400] hover:underline`}
                 >
                   {i.name}
                 </span>
