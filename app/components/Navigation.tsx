@@ -14,6 +14,10 @@ import { useLogOutQuery, useSocialAuthMutation } from "@/redux/features/auth/aut
 import { toast } from "react-toastify";
 type Props = {
   activeItem: number;
+  open: boolean;
+    setOpen: any;
+    route: string;
+    setRoute: (route:string) => void;
 };
 
 export const navItemsData = [
@@ -39,17 +43,15 @@ export const navItemsData = [
   },
 ];
 
-const Navigation: React.FC<Props> = ({ activeItem }) => {
+const Navigation: React.FC<Props> = ({ activeItem, open, setOpen, route, setRoute }) => {
   const [openSidebar, setOpenSidebar] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [route, setRoute] = useState("Login");
   const {user} = useSelector((state:any) => state.auth);
   const {data} = useSession();
   const [socialAuth,{isSuccess, error, data:userData}] = useSocialAuthMutation();
-  const [logout, setLogout] = useState(false);
-  const {} = useLogOutQuery(undefined, {
-   skip: !logout ? true : false
-  });
+  // const [logout, setLogout] = useState(false);
+  // const {} = useLogOutQuery(undefined, {
+  //  skip: !logout ? true : false
+  // });
    useEffect(() => {
      if(!user){
       if(data){
@@ -68,9 +70,9 @@ const Navigation: React.FC<Props> = ({ activeItem }) => {
         toast.error(errorData?.data.message);
       }
      }
-     if(data === null){
-       setLogout(true);
-     }
+    //  if(data === null){
+    //    setLogout(true);
+    //  }
    },[data,user,socialAuth,isSuccess,userData,error])
   
   const handleClose = (e: any) => {

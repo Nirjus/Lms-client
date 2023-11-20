@@ -11,11 +11,17 @@ interface Props{}
 
 const Page: FC<Props> = (props) =>{
   const [activeItem, setActiveItem] = useState(0);
-
+  const [open, setOpen] = useState(false);
+  const [route, setRoute] = useState("Login");
   return (
       <div>
         <Heading title="ALASKA" description="One stop e-learning platform" keyword="Programming,Science,Sanatan dharma" />
-       <Header  activeItem={activeItem} />
+       <Header 
+       open={open}
+       setOpen={setOpen}
+       route={route}
+       setRoute={setRoute}
+       activeItem={activeItem} />
         <Hero />
         <Courses />
         <Reviews />

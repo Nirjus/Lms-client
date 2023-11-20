@@ -60,7 +60,7 @@ const CreateCourse = (props: Props) => {
     ]);
     
     const [courseData, setCourseData] = useState({});
-    console.log(courseData);
+    
     const handleSubmit = async () => {
           const formatedBenefites = benefits.map((benefit) => ({title:benefit.title}));
           const formatedPrerequisites = prerequisites.map((prerequisites) => ({title: prerequisites.title}));

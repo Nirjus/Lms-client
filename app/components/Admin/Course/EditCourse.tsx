@@ -18,7 +18,7 @@ const EditCourse:FC<Props> = ({id}) => {
   const {data, refetch} = useGetAllCoursesQuery({},{refetchOnMountOrArgChange:true});
    
    const editCourse = data && data.courses.find((item:any) => item._id === id);
-     
+   
     useEffect(() => {
      if(isSuccess){
         toast.success("Course updated successfully");
@@ -39,6 +39,7 @@ const EditCourse:FC<Props> = ({id}) => {
         setCourseInfo({
             name:editCourse.name,
             description:editCourse.description,
+            category: editCourse.category,
             price:editCourse.price,
             estimatedPrice:editCourse.estimatedPrice,
             tags:editCourse.tags,
@@ -55,6 +56,7 @@ const EditCourse:FC<Props> = ({id}) => {
     const [courseInfo, setCourseInfo] = useState({
         name: "",
         description: "",
+        category:"",
         price:"",
         tags: "",
         level: "",
@@ -70,6 +72,7 @@ const EditCourse:FC<Props> = ({id}) => {
             title: "",
             description: "",
             videoSection: "Untitled Section",
+            videoLength: "",
             links: [
                 {
                     title: "",
@@ -88,6 +91,7 @@ const EditCourse:FC<Props> = ({id}) => {
             videoUrl: coursecontent.videoUrl,
             title: coursecontent.title,
             description: coursecontent.description,
+            videoLength: coursecontent.videoLength,
             videoSection: coursecontent.videoSection,
             links: coursecontent.links.map((link) => ({
                 title: link.title,
@@ -101,6 +105,7 @@ const EditCourse:FC<Props> = ({id}) => {
           const data = {
             name: courseInfo.name,
             description: courseInfo.description,
+            category: courseInfo.category,
             price: courseInfo.price,
             estimatedPrice: courseInfo.estimatedPrice,
             tags: courseInfo.tags,

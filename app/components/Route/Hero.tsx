@@ -1,15 +1,33 @@
 import { useGetHeroDataQuery } from "@/redux/features/layout/layputApi";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React,{useState} from "react";
 import { BiSearch } from "react-icons/bi";
+import Loader from "../Loader";
+import {useRouter} from "next/navigation";
+
 type Props = {};
 
 const Hero = (props: Props) => {
-  const { data } = useGetHeroDataQuery("Banner");
- 
+  const { data, isLoading } = useGetHeroDataQuery("Banner");
+  const [search, setSearch] = useState("");
+  const router = useRouter();
+
+   const handleSearch = () => {
+     if(search === ""){
+      return;
+     }else{
+      router.push(`/courses?title=${search}`);
+     }
+   }
+
   return (
-    <div className="w-full min-h-screen h-auto 1000px:flex items-center">
+   <>
+   {
+    isLoading ? (
+      <Loader />
+    ) : (
+      <div className="w-full min-h-screen h-auto 1000px:flex items-center">
       <div className="hero_animation absolute 1000px:w-[600px] 1000px:h-[600px] top-[100px] max-800px:w-[300px] max-800px:h-[300px] max-800px:left-[0px] max-800px:top-[70px] left-[50px] "></div>
       <div className=" w-full 1000px:w-[50%] pl-10 flex justify-center items-center pt-[80px] ">
         <Image
@@ -34,9 +52,13 @@ const Hero = (props: Props) => {
           <input
             type="search"
             placeholder="Search Courses..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             className=" bg-[#bebebe] border dark:border-none dark:bg-[#575757] dark:placeholder:text-[#ffffffdd] placeholder:text-white rounded-l-[5px] p-2 w-full h-full outline-none text-[#00000094] dark:text-[#ffffffe6] text-[20px] font-[600] font-Josefin "
           />
-          <div className=" flex items-center justify-center w-[50px] cursor-pointer h-[50px] right-0 top-0 bg-[#39c1f3] rounded-r-[5px]">
+          <div className=" flex items-center justify-center w-[50px] cursor-pointer h-[50px] right-0 top-0 bg-[#39c1f3] rounded-r-[5px]"
+          onClick={handleSearch}
+          >
             <BiSearch className="text-white" size={30} />
           </div>
         </div>
@@ -72,6 +94,9 @@ const Hero = (props: Props) => {
         <br />
       </div>
     </div>
+    )
+   }
+   </>
   );
 };
 

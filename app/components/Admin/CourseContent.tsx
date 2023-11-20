@@ -53,6 +53,7 @@ const CourseContent: FC<Props> = ({
       item.title === "" ||
       item.description === "" ||
       item.videoUrl === "" ||
+      item.videoLength === "" ||
       item.links[0].title === "" ||
       item.links[0].url === ""
     ) {
@@ -71,6 +72,7 @@ const CourseContent: FC<Props> = ({
       const newContent = {
         videoUrl: "",
         title: "",
+        videoLength: "",
         description: "",
         videoSection: newVideoSection,
         links: [{ title: "", url: "" }],
@@ -82,6 +84,7 @@ const CourseContent: FC<Props> = ({
     if (
       courseContentData[courseContentData.length - 1].title === "" ||
       courseContentData[courseContentData.length - 1].description === "" ||
+      courseContentData[courseContentData.length - 1].videoLength === "" ||
       courseContentData[courseContentData.length - 1].videoUrl === "" ||
       courseContentData[courseContentData.length - 1].links[0].title === "" ||
       courseContentData[courseContentData.length - 1].links[0].url === ""
@@ -92,6 +95,7 @@ const CourseContent: FC<Props> = ({
         const newContent = {
             videoUrl: "",
             title: "",
+            videoLength: "",
             description: "",
             videoSection: `Untitled Section ${activeSection}`,
             links: [{ title: "", url: "" }],
