@@ -20,7 +20,7 @@ const CourseContentlist: FC<Props> = ({
   );
   //  find unique video section
   const videoSections: string[] = [
-    ...new Set<string>(data?.map((item: any) => item.videoSection)),
+    ...new Set<string>(data?.map((item: any) => item.videoSection)) as any,
   ];
 
   let totalCount: number = 0;
