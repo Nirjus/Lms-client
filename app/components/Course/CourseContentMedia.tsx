@@ -8,7 +8,7 @@ import {
   AiOutlineArrowRight,
   AiOutlineStar,
 } from "react-icons/ai";
-import avatarPng from "../../assets/images/4532503.png";
+import defaultAvatar from "../../assets/images/4532503.png";
 import { toast } from "react-toastify";
 import {
   useAddAnswerMutation,
@@ -21,6 +21,9 @@ import { format } from "timeago.js";
 import { BiFastForward, BiMessage } from "react-icons/bi";
 import { VscVerifiedFilled } from "react-icons/vsc";
 import Ratings from "@/app/utils/Ratings";
+import socketIO from "socket.io-client";
+const ENDPOINT = process.env.NEXT_PUBLIC_SOCKET_SERVER_URI || "";
+const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 type Props = {
   data: any;
@@ -39,7 +42,7 @@ const CourseContentMedia = ({
   setActiveVideo,
   refetch,
 }: Props) => {
-  const [addNewQuestion, { isSuccess, error, isLoading: questionLoading }] =
+  const [addNewQuestion, { isSuccess:questionSuccess, error, isLoading: questionLoading }] =
     useAddNewQuestionMutation();
   const [
     addAnswer,
@@ -57,6 +60,8 @@ const CourseContentMedia = ({
     addReplyInReview,
     { isSuccess: replySuccess, error: replyError, isLoading: replyLoading },
   ] = useAddReplyInReviewMutation();
+  
+   const avatarPng = defaultAvatar;
   const [activeBar, setActiveBar] = useState(0);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -86,10 +91,15 @@ const CourseContentMedia = ({
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    if (questionSuccess) {
       setQuestion("");
       refetch();
       toast.success("Question added successFully");
+      socketId.emit("notification", {
+        title: "New Question Received",
+        message: `You have a new question in ${data[activeVideo].title}`,
+        userId: user?._id,
+      });
     }
     if (error) {
       if ("data" in error) {
@@ -97,12 +107,17 @@ const CourseContentMedia = ({
         toast.error(errorMessage.data.message);
       }
     }
-  }, [isSuccess, refetch, error]);
-  useEffect(() => {
     if (answerSuccess) {
       setAnswer("");
       refetch();
       toast.success("Answer added successfully");
+      if(user.role !== "admin"){
+        socketId.emit("notification", {
+          title: "New Reply Received",
+          message: `You have a new question reply in ${data[activeVideo].title}`,
+          userId: user?._id,
+        });
+      }
     }
     if (answerError) {
       if ("data" in answerError) {
@@ -110,12 +125,15 @@ const CourseContentMedia = ({
         toast.error(errorMessage.data.message);
       }
     }
-  }, [answerSuccess, answerError, refetch]);
-  useEffect(() => {
     if (reviewSuccess) {
       setReview("");
       courseRefetch();
       toast.success("Review added successfully");
+      socketId.emit("notification", {
+        title: "New Question Received",
+        message: `You have a new question in ${data[activeVideo].name}`,
+        userId: user?._id,
+      });
     }
     if (reviewError) {
       if ("data" in reviewError) {
@@ -123,9 +141,6 @@ const CourseContentMedia = ({
         toast.error(errorMessage.data.message);
       }
     }
-  }, [reviewSuccess, reviewError, courseRefetch]);
-
-  useEffect(() => {
     if (replySuccess) {
       setReply("");
       courseRefetch();
@@ -137,7 +152,22 @@ const CourseContentMedia = ({
         toast.error(errorMessage.data.message);
       }
     }
-  }, [replySuccess, replyError, courseRefetch]);
+  }, [
+    questionSuccess,
+    refetch,
+    error,
+    activeVideo,
+    user,
+    data,
+    answerSuccess,
+    answerError,
+    reviewSuccess,
+    reviewError,
+    courseRefetch,
+    replySuccess,
+    replyError,
+  ]);
+
   const handleAnswerSubmit = () => {
     addAnswer({
       answer,
@@ -255,7 +285,7 @@ const CourseContentMedia = ({
         <>
           <div className="flex w-full">
             <Image
-              src={user?.avatar ? user?.avatar?.url : avatarPng}
+              src={user?.avatar ? user?.avatar?.url : avatarPng || defaultAvatar}
               width={50}
               height={50}
               className=" rounded-full w-[50px] h-[50px] object-cover"
@@ -293,8 +323,10 @@ const CourseContentMedia = ({
               setAnswer={setAnswer}
               handleAnswerSubmit={handleAnswerSubmit}
               user={user}
+              questionId={questionId}
               setQuestionId={setQuestionId}
               answerLoading={answerLoading}
+              avatarPng={avatarPng}
             />
           </div>
         </>
@@ -307,7 +339,7 @@ const CourseContentMedia = ({
               <>
                 <div className="flex w-full">
                   <Image
-                    src={user?.avatar ? user?.avatar?.url : avatarPng}
+                    src={user?.avatar ? user?.avatar?.url : avatarPng || defaultAvatar}
                     width={50}
                     height={50}
                     className=" rounded-full w-[50px] h-[50px] object-cover"
@@ -376,7 +408,7 @@ const CourseContentMedia = ({
                           src={
                             item?.user?.avatar
                               ? item?.user?.avatar?.url
-                              : avatarPng
+                              : avatarPng || defaultAvatar
                           }
                           width={50}
                           height={50}
@@ -393,11 +425,12 @@ const CourseContentMedia = ({
                         </small>
                       </div>
                     </div>
-                    {user.role == "admin" && (
+                    {user.role == "admin" && item.commentReplies.length === 0 && (
                       <span
                         className={` !ml-10 cursor-pointer flex gap-2 text-[15px] items-center`}
                         onClick={() => {
-                          setIsReviewReply(!isReviewReply), setReviewId(item._id);
+                          setIsReviewReply(!isReviewReply),
+                            setReviewId(item._id);
                         }}
                       >
                         Add Reply{" "}
@@ -407,7 +440,7 @@ const CourseContentMedia = ({
                         />
                       </span>
                     )}
-                    {isReviewReply && (
+                    {isReviewReply && reviewId === item._id && (
                       <div className=" w-full flex relative">
                         <input
                           type="text"
@@ -430,15 +463,12 @@ const CourseContentMedia = ({
                         </button>
                       </div>
                     )}
-                    {
-                      item.commentReplies.map((i:any, index:number) => (
-                        <div className="w-full flex 800px:ml-16 my-5" key={index}>
+                    {item.commentReplies.map((i: any, index: number) => (
+                      <div className="w-full flex 800px:ml-16 my-5" key={index}>
                         <div>
                           <Image
                             src={
-                              i?.user?.avatar
-                                ? i?.user?.avatar?.url
-                                : avatarPng
+                              i?.user?.avatar ? i?.user?.avatar?.url : avatarPng || defaultAvatar
                             }
                             width={50}
                             height={50}
@@ -447,24 +477,23 @@ const CourseContentMedia = ({
                           />
                         </div>
                         <div className="pl-3">
-                         <div className="flex items-center gap-1">
-                         <h1 className=" text-[18px]">{i?.user?.name}</h1>
-                          {i?.user.role === "admin" && (
-                      <VscVerifiedFilled
-                        size={20}
-                        className=" text-[#4d83e6]"
-                      />
-                    )}
-                         </div>
-                  
+                          <div className="flex items-center gap-1">
+                            <h1 className=" text-[18px]">{i?.user?.name}</h1>
+                            {i?.user.role === "admin" && (
+                              <VscVerifiedFilled
+                                size={20}
+                                className=" text-[#4d83e6]"
+                              />
+                            )}
+                          </div>
+
                           <p>{i.comment}</p>
                           <small className=" text-[#373636dd] dark:text-[#d6d3d397]">
                             {format(i.createdAt)}
                           </small>
                         </div>
                       </div>
-                      ))
-                    }
+                    ))}
                   </div>
                 )
               )}
@@ -483,8 +512,10 @@ export const CommentReply = ({
   setAnswer,
   handleAnswerSubmit,
   user,
+  questionId,
   setQuestionId,
   answerLoading,
+  avatarPng,
 }: any) => {
   return (
     <>
@@ -496,9 +527,11 @@ export const CommentReply = ({
             item={item}
             answer={answer}
             setAnswer={setAnswer}
+            questionId={questionId}
             setQuestionId={setQuestionId}
             handleAnswerSubmit={handleAnswerSubmit}
             answerLoading={answerLoading}
+            avatarPng={avatarPng}
           />
         ))}
       </div>
@@ -512,8 +545,10 @@ const CommentItem = ({
   item,
   answer,
   setAnswer,
+  questionId,
   handleAnswerSubmit,
   answerLoading,
+  avatarPng
 }: any) => {
   const [replyActive, setReplyActive] = useState(false);
   return (
@@ -522,7 +557,7 @@ const CommentItem = ({
         <div className="flex mb-2">
           <div>
             <Image
-              src={item?.user?.avatar ? item?.user?.avatar?.url : avatarPng}
+              src={item?.user?.avatar ? item?.user?.avatar?.url : avatarPng || defaultAvatar}
               width={50}
               height={50}
               className=" rounded-full w-[50px] h-[50px] object-cover"
@@ -546,7 +581,7 @@ const CommentItem = ({
               setReplyActive(!replyActive), setQuestionId(item?._id);
             }}
           >
-            {!replyActive
+            {!replyActive 
               ? item?.questionReplies.length === 0
                 ? "Add Reply"
                 : "All Replies "
@@ -560,7 +595,7 @@ const CommentItem = ({
             {item?.questionReplies.length}
           </span>
         </div>
-        {replyActive && (
+        {replyActive && questionId === item._id && (
           <>
             {item.questionReplies.map((reply: any, Replyindex: any) => (
               <div
@@ -570,7 +605,7 @@ const CommentItem = ({
                 <div>
                   <Image
                     src={
-                      reply?.user?.avatar ? reply?.user?.avatar?.url : avatarPng
+                      reply?.user?.avatar ? reply?.user?.avatar?.url : avatarPng || defaultAvatar
                     }
                     width={50}
                     height={50}

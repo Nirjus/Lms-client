@@ -5,6 +5,7 @@ import Heading from "../utils/Heading";
 import Header from "../components/Header";
 import Profile from "../components/Profile/Profile";
 import { useSelector } from "react-redux";
+import Footer from "../components/Footer";
 type Props = {};
 
 const Page: React.FC<Props> = () => {
@@ -13,7 +14,7 @@ const Page: React.FC<Props> = () => {
   const [open, setOpen] = useState(false);
   const [route, setRoute] = useState("Login");
   return (
-    <div>
+    <div className=" min-h-screen">
       <Protected>
         <Heading
           title={`${user?.name} profile - ALASKA`}
@@ -28,6 +29,7 @@ const Page: React.FC<Props> = () => {
           activeItem={activeItem}
         />
         <Profile user={user} />
+        <Footer />
       </Protected>
     </div>
   );

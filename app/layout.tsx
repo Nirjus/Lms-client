@@ -9,6 +9,10 @@ import {SessionProvider} from "next-auth/react"
 import { useLoadUserQuery } from '@/redux/features/api/apiSlice';
 import Loader from  "./components/Loader";
 import { ThemeProvider } from 'next-themes';
+import socketIO from "socket.io-client";
+import { useEffect } from 'react';
+const ENDPOINT = process.env.NEXT_PUBLIC_SOCKET_SERVER_URI || "";
+const socketId = socketIO(ENDPOINT, {transports: ["websocket"]});
 
 const poppins = Poppins({ subsets: ['latin'], weight:["300","400","500","600","700"],variable:"--font-Poppins" });
 const josefin = Josefin_Sans({ subsets: ['latin'], weight:["300","400","500","600","700"],variable:"--font-Josefin" });
@@ -41,6 +45,10 @@ export default function RootLayout({
 
 const Custom: React.FC<{children: React.ReactNode}> = ({children}) => {
  const {isLoading} = useLoadUserQuery({});
+
+ useEffect(() => {
+    socketId.on("connection", () => {});
+ },[])
   return (
     <>
     {

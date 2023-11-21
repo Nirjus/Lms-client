@@ -67,6 +67,8 @@ const Reviews = (props: Props) => {
                   <p className={style.label}>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum molestias, itaque quisquam esse quos pariatur quaerat, dolorem facilis dolor odit consequuntur? Obcaecati ipsum incidunt culpa voluptas dignissimos suscipit distinctio veritatis?
                   </p>
+                  <br />
+                  <br />
              </div>
              <br />
              <br />

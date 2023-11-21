@@ -27,11 +27,11 @@ const CourseCard: FC<Props> = ({ item, isProfile }) => {
         <h1 className=" font-Poppins text-[16px] text-black dark:text-white">
           {item.name}
         </h1>
-        <div className=" w-full flex items-center justify-between pt-2">
+        <div className={`w-full flex items-center justify-between pt-2`}>
           <Ratings rating={item.ratings} />
           <h5
             className={` text-black dark:text-white ${
-              isProfile && "hidden 800px:inline"
+              isProfile && " hidden 800px:inline"
             }`}
           >
             {item.purchased} Students

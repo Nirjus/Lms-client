@@ -8,6 +8,7 @@ import Header from "../components/Header";
 import Heading from "../utils/Heading";
 import { style } from "../styles/style";
 import CourseCard from "../components/Course/CourseCard";
+import Footer from "../components/Footer";
 
 type Props = {};
 
@@ -96,13 +97,14 @@ const Page = (props: Props) => {
             )}
             <br />
             <br />
-            <div className="grid grid-cols-1 gap-[20px] md:grid-[25px] lg:grid-cols-3 lg:gap-[25px] 1500px:grid-cols-4 1500px:gap-[35px] mb-12 border-0">
+            <div className="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-3 lg:gap-[25px] 1500px:grid-cols-4 1500px:gap-[35px] mb-12 border-0">
               {courses &&
                 courses.map((item: any, index: number) => (
                   <CourseCard item={item} key={index} />
                 ))}
             </div>
           </div>
+          <Footer />
         </>
       )}
     </div>

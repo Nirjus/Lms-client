@@ -13,9 +13,8 @@ import { style } from "@/app/styles/style";
 import CourseContentlist from "../Course/CourseContentlist";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../Payment/CheckoutForm"
-import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
 import Image from "next/image";
-import avatarPng from "../../assets/images/4532503.png";
+import defaultAvatar from "../../assets/images/4532503.png";
 import { VscVerifiedFilled } from "react-icons/vsc";
 
 type Props = {
@@ -28,9 +27,8 @@ type Props = {
 
 const CourseDetails = ({ data, clientSecret, stripePromise, setRoute, setOpen:openAuthModal }: Props) => {
   const {user} = useSelector((state:any) => state.auth);
-  
   const [open, setOpen] = useState(false);
-
+   const avatarPng = defaultAvatar;
   const discountPercentage =
     ((data?.estimatedPrice - data?.price) / data?.estimatedPrice) * 100;
 
@@ -145,7 +143,7 @@ const CourseDetails = ({ data, clientSecret, stripePromise, setRoute, setOpen:op
                           src={
                             item?.user?.avatar
                               ? item?.user?.avatar?.url
-                              : avatarPng
+                              : avatarPng || defaultAvatar
                           }
                           width={50}
                           height={50}
@@ -183,7 +181,7 @@ const CourseDetails = ({ data, clientSecret, stripePromise, setRoute, setOpen:op
                             src={
                               i?.user?.avatar
                                 ? i?.user?.avatar?.url
-                                : avatarPng
+                                : avatarPng || defaultAvatar
                             }
                             width={50}
                             height={50}
@@ -262,7 +260,7 @@ const CourseDetails = ({ data, clientSecret, stripePromise, setRoute, setOpen:op
                 {
                     stripePromise && clientSecret && (
                       <Elements stripe={stripePromise} options={{clientSecret}}>
-                      <CheckoutForm setOpen={setOpen} data={data} />
+                      <CheckoutForm setOpen={setOpen} data={data} user={user} />
                       </Elements>
                     )
                 }
