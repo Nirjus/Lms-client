@@ -38,14 +38,14 @@ const DashboardHeader: FC<Props> = ({open, setOpen}) => {
       refetch();
      }
      audio.load();
-  },[data, isSuccess]);
+  },[data, isSuccess, audio, refetch]);
 
   useEffect(() => {
     socketId.on("newNotefication",(data) => {
       refetch();
       playerNotificationSound();
     })
-  },[]);
+  },[refetch]);
 
 const handleNotificationStatusChange = async (id:string) => {
   await updateNotification(id);
