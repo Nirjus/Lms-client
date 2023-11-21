@@ -4,11 +4,14 @@ import AdminSidebar from "../../../components/Admin/sidebar/AdminSidebar";
 import Heading from '@/app/utils/Heading';
 import DashboardHeader from '@/app/components/Admin/DashbordHeader';
 import EditCourse from "../../../components/Admin/Course/EditCourse"
-import { useParams } from 'next/navigation';
-type Props = {}
 
-const page = (props: Props) => {
-    const {id}:any = useParams();
+type Props = {
+ 
+}
+
+const page = ({params}:any) => {
+    const id = params.id;
+    console.log(id);
   return (
     <div>
         <Heading 
