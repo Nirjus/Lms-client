@@ -81,7 +81,7 @@ const AllInvoices: FC<Props> = ({ isDashboard }) => {
             userEmail: item.userEmail,
             title: item.title,
             price: item.price,
-            created_at: format(item.cretedAt),
+            created_at: format(item.createdAt),
         })
      })
   return (
