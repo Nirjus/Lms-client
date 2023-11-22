@@ -5,6 +5,7 @@ import ThemeSwitcher from "../utils/ThemeSwitcher";
 import { HiOutlineMenuAlt3, HiOutlineUserCircle } from "react-icons/hi";
 import CustomModal from "../utils/CustomModal";
 import Login from "../components/Auth/Login";
+import ForgotPassword from "../components/Auth/ForgotPassword"
 import SignUp from "../components/Auth/SignUp";
 import Verification from "../components/Auth/Verification"
 import Image from "next/image";
@@ -223,6 +224,24 @@ const Navigation: React.FC<Props> = ({ activeItem, open, setOpen, route, setRout
           </>
          )
       }
+       {
+         route === "Forgot-Password" && (
+          <>
+            {
+              open && (
+                <CustomModal 
+                 open={open}
+                 setOpen={setOpen}
+                 setRoute={setRoute}
+                 activeItem={activeItem}
+                 component={ForgotPassword}
+                />
+              )
+            }
+          </>
+         )
+      }
+      
       {
          route === "Sign-Up" && (
           <>

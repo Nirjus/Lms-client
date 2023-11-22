@@ -104,7 +104,11 @@ const Login: React.FC<Props> = ({setRoute,setOpen}) => {
           {errors.password && touched.password && (
             <span className=" text-red-500 pt-2 block">{errors.password}</span>
           )}
-       
+         <h3 className=" text-[#2190ff] text-[15px] cursor-pointer text-right pt-1"
+         onClick={() => setRoute("Forgot-Password")}
+         >
+         Forgot Password?
+         </h3>
         <div className=" w-full my-5">
         <button type="submit" className={`${style.button}`}>Sign in</button>
 
