@@ -60,7 +60,7 @@ const Page = (props: Props) => {
             setOpen={setOpen}
             activeItem={1}
           />
-          <div className="w-[95%] pt-[100px] 800px:w-[85%] m-auto min-h-[70vh]">
+          <div className="w-[95%] pt-[100px] 800px:w-[85%] m-auto min-h-screen h-auto">
             <div className=" w-full flex items-center flex-wrap ">
               <div
                 className={`h-[35px] text-white ${
