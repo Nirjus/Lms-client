@@ -25,7 +25,9 @@ margin: 0;
 input[type="number"] {
 -moz-appearance: textfield;
 }
-  
+  .scrollvarhidden::-webkit-scrollbar{
+    display: none;
+  }
 ::-webkit-scrollbar{
   width: 8px;
 }
