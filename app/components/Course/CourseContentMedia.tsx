@@ -285,7 +285,7 @@ const CourseContentMedia = ({
         <>
           <div className="flex w-full">
             <Image
-              src={user?.avatar ? user?.avatar?.url : avatarPng || defaultAvatar}
+              src={user?.avatar ? user?.avatar?.url : user?.socialAvatar ? user?.socialAvatar : defaultAvatar}
               width={50}
               height={50}
               className=" rounded-full w-[50px] h-[50px] object-cover"
@@ -339,7 +339,7 @@ const CourseContentMedia = ({
               <>
                 <div className="flex w-full">
                   <Image
-                    src={user?.avatar ? user?.avatar?.url : avatarPng || defaultAvatar}
+                    src={user?.avatar ? user?.avatar?.url : user?.socialAvatar ? user?.socialAvatar : defaultAvatar}
                     width={50}
                     height={50}
                     className=" rounded-full w-[50px] h-[50px] object-cover"
@@ -408,7 +408,7 @@ const CourseContentMedia = ({
                           src={
                             item?.user?.avatar
                               ? item?.user?.avatar?.url
-                              : avatarPng || defaultAvatar
+                              : item?.user?.socialAvatar ? item?.user?.socialAvatar : defaultAvatar
                           }
                           width={50}
                           height={50}
@@ -468,7 +468,7 @@ const CourseContentMedia = ({
                         <div>
                           <Image
                             src={
-                              i?.user?.avatar ? i?.user?.avatar?.url : avatarPng || defaultAvatar
+                              i?.user?.avatar ? i?.user?.avatar?.url : i?.user?.socialAvatar ? i?.user?.socialAvatar : defaultAvatar
                             }
                             width={50}
                             height={50}
@@ -557,7 +557,7 @@ const CommentItem = ({
         <div className="flex mb-2">
           <div>
             <Image
-              src={item?.user?.avatar ? item?.user?.avatar?.url : avatarPng || defaultAvatar}
+              src={item?.user?.avatar ? item?.user?.avatar?.url : item?.user?.socialAvatar ? item?.user?.socialAvatar : defaultAvatar}
               width={50}
               height={50}
               className=" rounded-full w-[50px] h-[50px] object-cover"
@@ -605,7 +605,7 @@ const CommentItem = ({
                 <div>
                   <Image
                     src={
-                      reply?.user?.avatar ? reply?.user?.avatar?.url : avatarPng || defaultAvatar
+                      reply?.user?.avatar ? reply?.user?.avatar?.url : reply?.user?.socialAvatar ? reply?.user?.socialAvatar : defaultAvatar
                     }
                     width={50}
                     height={50}

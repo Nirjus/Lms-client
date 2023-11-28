@@ -35,8 +35,8 @@ export const navItemsData = [
     url: "/about",
   },
   {
-    name: "Policy",
-    url: "/policy",
+    name: "Creators",
+    url: "/creator",
   },
   {
     name: "FAQ",
@@ -84,7 +84,7 @@ const Navigation: React.FC<Props> = ({ activeItem, open, setOpen, route, setRout
  
   return (
     <div
-      className={`items-center p-2 flex !w-[95%] mx-auto bg-[#f6f6f6f3] dark:bg-[#131322f0] rounded-[20px] shadow-xl dark:shadow-lg dark:shadow-[#000000bc] `}
+      className={`items-center p-2 flex !w-[95%] mx-auto bg-[#f6f6f6e4] dark:bg-[#131322f2] rounded-[20px] backdrop-blur-[4px] shadow-xl dark:shadow-lg dark:shadow-[#000000bc] `}
     >
       <div className="flex-1">
         <Link className=" text-[30px] pl-3 hover:text-[#2a7fe0] dark:hover:text-[#2a7fe0] dark:text-white text-[#151515] font-[600]" href={"/"}>
@@ -122,13 +122,13 @@ const Navigation: React.FC<Props> = ({ activeItem, open, setOpen, route, setRout
               user ? (
                 <Link href={"/profile"}>
                
-                {
+                {/* {
                  !user.avatar && data?.user ? (
                 <Image src={data.user.image ? data?.user?.image : avatar} alt="Profile-Pic" width={50} height={50} style={{border: activeItem === 5 ? "2px solid cyan" : "none"}}  className=" w-10 h-10 rounded-full object-cover"/>
-                  ) :(
-                    <Image src={user.avatar ? user.avatar.url : avatar} alt="Profile-Pic" width={50} height={50} style={{border: activeItem === 5 ? "2px solid cyan" : "none"}}  className=" w-10 h-10 rounded-full object-cover mt-1"/>
-                  )
-                }
+                  ) :( */}
+                    <Image src={user.avatar ? user.avatar.url : user?.socialAvatar ? user?.socialAvatar : avatar} alt="Profile-Pic" width={50} height={50} style={{border: activeItem === 5 ? "2px solid cyan" : "none"}}  className=" w-10 h-10 rounded-full object-cover mt-1"/>
+                {/* //   ) */}
+                {/* // } */}
                 </Link>
               ) : (
                 <HiOutlineUserCircle className=" cursor-pointer text-black dark:text-white" onClick={() => setOpen(true)} size={45} />
@@ -185,13 +185,13 @@ const Navigation: React.FC<Props> = ({ activeItem, open, setOpen, route, setRout
              {
               user ? (
                 <Link href={"/profile"}>
-                {
+                {/* {
                  !user.avatar && data?.user ? (
                 <Image src={data.user.image ? data?.user?.image : avatar} alt="Profile-Pic" width={50} height={50} style={{border: activeItem === 5 ? "2px solid cyan" : "none"}}  className=" w-10 h-10 rounded-full object-cover"/>
-                  ) :(
-                    <Image src={user.avatar ? user.avatar.url : avatar} alt="Profile-Pic" width={50} height={50} style={{border: activeItem === 5 ? "2px solid cyan" : "none"}}  className=" w-10 h-10 rounded-full object-cover"/>
-                  )
-                }
+                  ) :( */}
+                    <Image src={user.avatar ? user.avatar.url : user?.socialAvatar ? user?.socialAvatar : avatar} alt="Profile-Pic" width={50} height={50} style={{border: activeItem === 5 ? "2px solid cyan" : "none"}}  className=" w-10 h-10 rounded-full object-cover"/>
+                {/* //   ) */}
+                {/* // } */}
                 </Link>
               ) : (
                 <HiOutlineUserCircle className=" cursor-pointer" onClick={() => setOpen(true)} size={45} />

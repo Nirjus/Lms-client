@@ -143,7 +143,7 @@ const CourseDetails = ({ data, clientSecret, stripePromise, setRoute, setOpen:op
                           src={
                             item?.user?.avatar
                               ? item?.user?.avatar?.url
-                              : avatarPng || defaultAvatar
+                              : item?.user?.socialAvatar ? item?.user?.socialAvatar : defaultAvatar
                           }
                           width={50}
                           height={50}
@@ -181,7 +181,7 @@ const CourseDetails = ({ data, clientSecret, stripePromise, setRoute, setOpen:op
                             src={
                               i?.user?.avatar
                                 ? i?.user?.avatar?.url
-                                : avatarPng || defaultAvatar
+                                : i?.user?.socialAvatar ? i?.user?.socialAvatar : avatarPng
                             }
                             width={50}
                             height={50}

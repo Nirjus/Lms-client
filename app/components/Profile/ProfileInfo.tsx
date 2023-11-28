@@ -54,25 +54,15 @@ const {} = useLoadUserQuery(undefined, {skip:loadUser ? false : true });
     <>
       <div className="w-full flex justify-center">
         <div className="relative">
-         {
-          !user.avatar && data?.user ? (
+          
             <Image
-            src={data.user?.image ? data.user?.image : avatarIcon}
+            src={user?.avatar ? user?.avatar?.url : user?.socialAvatar ? user?.socialAvatar : avatarIcon}
             alt="profile-pic"
             width={120}
             height={120}
             className="w-[120px] h-[120px] cursor-pointer border-[3px] border-[#37a39a] rounded-full"
           />
-          ) : (
-            <Image
-            src={user.avatar || avatar ? user.avatar.url || avatar : avatarIcon}
-            alt="profile-pic"
-            width={120}
-            height={120}
-            className="w-[120px] h-[120px] cursor-pointer border-[3px] border-[#37a39a] rounded-full"
-          />
-          )
-         }
+        
           <input
             type="file"
             name=""

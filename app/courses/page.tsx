@@ -9,6 +9,8 @@ import Heading from "../utils/Heading";
 import { style } from "../styles/style";
 import CourseCard from "../components/Course/CourseCard";
 import Footer from "../components/Footer";
+import PaginationComponent from "../utils/PaginationComponent";
+import Image from "next/image";
 
 type Props = {};
 
@@ -17,14 +19,12 @@ const Page = (props: Props) => {
   const search = searchParams?.get("title");
   const [open, setOpen] = useState(false);
   const [route, setRoute] = useState("Login");
-  const [focus, setFocus] = useState(0);
   const { data, isLoading } = useGetUserAllCoursesQuery(undefined, {});
   const { data: categoryData } = useGetHeroDataQuery("Category");
   const [courses, setCourses] = useState([]);
   const [category, setCategory] = useState("All");
   const [startIndex, setStartIndex] = useState(0);
   const resultPerPage = 4;
-  let totlaPagination = Math.ceil(data?.courses?.length/resultPerPage)
   const [lastIndex, setLastIndex] = useState(resultPerPage);
   
   useEffect(() => {
@@ -46,32 +46,7 @@ const Page = (props: Props) => {
   }, [data, category, search]);
 
   const categories = categoryData?.layout.category;
-   if(courses && courses.length){
-   totlaPagination = Math.ceil(courses.length/resultPerPage);
-   }
-  const pageChangeHandeler = (index: number) => {
-    setStartIndex(resultPerPage * index);
-    setLastIndex(resultPerPage * index + resultPerPage);
-    setFocus(index);
-  };
 
-  const setPrev = () => {
-    if(startIndex > 0){
-    setStartIndex(startIndex-resultPerPage);
-    setLastIndex(lastIndex - resultPerPage);
-    setFocus(focus-1);
-    }
-  }
-  const setNext = () => {
-    
-    if(courses && courses.length){
-      if(lastIndex < courses.length){
-        setStartIndex(startIndex+resultPerPage);
-        setLastIndex(lastIndex+resultPerPage);
-        setFocus(focus+1);
-      }
-    }
-  }
   return (
     <div>
       {isLoading ? (
@@ -90,7 +65,29 @@ const Page = (props: Props) => {
             setOpen={setOpen}
             activeItem={1}
           />
-          <div className="w-[95%] pt-[100px] 800px:w-[85%] m-auto min-h-screen h-auto relative">
+          <div className="w-[95%] pt-[100px] 800px:w-[85%] m-auto min-h-screen h-auto">
+            <div className= {`w-full h-[300px] `}>
+              <div className=" w-full h-[96%] m-auto bg-gradient-to-r from-[#ffffff00] to-[#9292d33b] rounded-br-[100px] flex justify-between items-center max-400px:items-end rounded">
+                <h1
+                  className={`text-[45px] pb-10 max-800px:pb-[150px] text-black dark:text-white font-Poppins font-[500]`}
+                >
+                  Popular
+                  <br />
+                  <span className="bg-clip-text text-[#0000] bg-gradient-to-r from-[#0c39ff] to-[#17c7d7]">
+                    courses
+                  </span>
+                </h1>
+                <div className=" h-[220px] max-800px:h-[170px] object-contain">
+                  <Image
+                    src={require("../assets/images/miking.png")}
+                    width={1000}
+                    height={1000}
+                    className={`400px:w-[300px] 400px:h-[300px] dark:bg-[#0c101a] bg-white rounded-full object-contain`}
+                    alt="books"
+                  />
+                </div>
+              </div>
+            </div>
             <div className=" w-full flex items-center flex-wrap ">
               <div
                 className={`h-[35px] text-white ${
@@ -135,32 +132,16 @@ const Page = (props: Props) => {
                     <CourseCard item={item} key={index} />
                   ))}
             </div>
-           <div className="w-full 800px:mt-[100px] mb-1 flex justify-center items-center 800px:absolute bottom-8 left-0 ">
-            <button className=" border active:bg-slate-400 rounded-md dark:active:bg-slate-800 p-1 bg-slate-200 dark:bg-transparent text-black dark:text-white m-2"
-            onClick={() => setPrev()}
-            >
-              prev
-            </button>
-           <div className="scrollvarhidden w-[150px] overflow-x-scroll flex flex-row justify-start items-center ">
-              {
-                [...Array(totlaPagination)].map((item:any, index: number) => (
-                  <button
-                    className={`min-w-[40px] min-h-[35px] rounded-md text-center  active:bg-slate-400 dark:active:bg-slate-800 text-black dark:text-white m-1
-                    ${focus === index ? " bg-blue-400" : "bg-slate-200 dark:bg-slate-700"}
-                    `}
-                    key={index}
-                    onClick={() => pageChangeHandeler(index)}
-                  >
-                    {index + 1}
-                  </button>
-                ))}
-            </div>
-            <button className=" border p-1 active:bg-slate-400 rounded-md dark:active:bg-slate-800 bg-slate-200 dark:bg-transparent text-black dark:text-white m-2"
-            onClick={() => setNext()}
-            >
-              next
-            </button>
-           </div>
+
+            <PaginationComponent
+              itemArray={courses}
+              startIndex={startIndex}
+              lastIndex={lastIndex}
+              setStartIndex={setStartIndex}
+              setLastIndex={setLastIndex}
+              resultPerPage={resultPerPage}
+              data={data?.courses}
+            />
           </div>
 
           <Footer />

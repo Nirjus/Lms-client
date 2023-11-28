@@ -4,6 +4,8 @@ import {
     AiFillInstagram,
     AiFillLinkedin,
   } from "react-icons/ai";
+  import Link from "next/link";
+
 type Props = {}
 
 const Footer = (props: Props) => {
@@ -46,7 +48,7 @@ const Footer = (props: Props) => {
         <h1 className="p-1 text-[21px] font-bold">Read Our About </h1>
         <p>Blogs </p>
         <p>Carrier</p>
-        <p>Our Story</p>
+        <Link href={"/policis"}>Our Policy</Link>
        
       </div>
     </div>

@@ -1,11 +1,35 @@
 import React from "react";
 import { style } from "../styles/style";
+import Image from "next/image";
 
 type Props = {};
 
 const About = (props: Props) => {
   return (
-    <div className=" pt-[100px] w-[90%] h-auto m-auto">
+    <div className=" pt-[100px] w-[95%] 800px:w-[85%] h-auto m-auto">
+       <div className=" w-full h-[300px]">
+              <div className=" w-full h-[96%] m-auto bg-gradient-to-r from-[#ffffff00] to-[#9292d33b] rounded-br-[100px] flex justify-between items-center max-400px:items-end rounded">
+                <h1
+                  className={`text-[45px] pb-10 max-800px:pb-[150px] text-black dark:text-white font-Poppins font-[500]`}
+                >
+                  About
+                  <span className="bg-clip-text text-[#0000] bg-gradient-to-r from-[#0c39ff] to-[#17c7d7]">
+                   {" "}Us
+                  </span>
+                </h1>
+                <div className=" h-[220px] max-800px:h-[180px] object-contain">
+                  <Image
+                    src={require("../assets/images/aboutUs.png")}
+                    width={1000}
+                    height={1000}
+                    className=" 400px:w-[300px] 400px:h-[300px] dark:bg-[#0d121e] bg-white rounded-full object-contain"
+                    alt="books"
+                  />
+                </div>
+              </div>
+            </div>
+            <br />
+  
       <h1 className={`${style.title} font-Josefin 800px:!text-[45px] !font-[600]`}>
         What is{" "}
         <span className=" bg-clip-text text-[#0000] bg-gradient-to-r from-[#0c39ff] to-[#17c7d7]">
@@ -13,8 +37,7 @@ const About = (props: Props) => {
         </span>
       </h1>
       <br />
-      <br />
-      <div className="w-full 800px:w-[90%] m-auto text-justify">
+      <div className="w-full m-auto text-justify">
         <p className=" text-[18px] font-Poppins">
           Welcome to ALASKA, your premier destination for cutting-edge online
           learning experiences. At ALASKA, we are committed to revolutionizing
@@ -69,7 +92,7 @@ const About = (props: Props) => {
           <li>
             <p className=" text-[18px] font-Poppins underline">Flexible Learning:</p>
             <p className=" text-[18px] font-Josefin">
-              Life is busy, and we understand that. With [Your Company Name],
+              Life is busy, and we understand that. With ALASKA,
               you have the flexibility to learn at your own pace. Access courses
               anytime, anywhere, and on any device.
             </p>
