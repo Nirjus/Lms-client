@@ -4,7 +4,7 @@ import Loader from "../Loader";
 import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineMail } from "react-icons/ai";
-import { useGetAllCoursesQuery } from "@/redux/features/courses/coursesApi";
+import {  useGetUserAllCoursesQuery } from "@/redux/features/courses/coursesApi";
 import avatarPng from "../../assets/images/4532503.png";
 import PaginationComponent from "@/app/utils/PaginationComponent";
 
@@ -12,12 +12,13 @@ type Props = {};
 
 const CreatersCard = (props: Props) => {
   const { data, isLoading } = useGetAllCreatersQuery({});
-  const { data: courseData } = useGetAllCoursesQuery({});
+  const { data: courseData } = useGetUserAllCoursesQuery(undefined,{});
   const [creaters, setCreaters] = useState([]);
   const [course, setCourse] = useState([]);
   const [startIndex, setStartIndex] = useState(0);
   const resultPerPage = 8;
   const [lastIndex, setLastIndex] = useState(resultPerPage);
+ 
   useEffect(() => {
     if (data) {
       setCreaters(data?.users);
@@ -38,7 +39,7 @@ const CreatersCard = (props: Props) => {
         return total + (associatedCourse ? associatedCourse.purchased : 0);
       }, 0),
     }));
-
+ console.log(creatorTotalPurchased)
   return (
     <>
       {isLoading ? (
