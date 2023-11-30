@@ -6,7 +6,7 @@ type Props = {};
 
 const About = (props: Props) => {
   return (
-    <div className=" pt-[100px] w-[95%] 800px:w-[85%] h-auto m-auto">
+    <div className=" pt-[40px] w-[95%] 800px:w-[85%] h-auto m-auto">
        <div className=" w-full h-[300px]">
               <div className=" w-full h-[96%] m-auto bg-gradient-to-r from-[#ffffff00] to-[#9292d33b] rounded-br-[100px] flex justify-between items-center max-400px:items-end rounded">
                 <h1

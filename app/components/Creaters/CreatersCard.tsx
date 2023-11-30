@@ -39,7 +39,7 @@ const CreatersCard = (props: Props) => {
         return total + (associatedCourse ? associatedCourse.purchased : 0);
       }, 0),
     }));
- console.log(creatorTotalPurchased)
+
   return (
     <>
       {isLoading ? (
@@ -49,7 +49,7 @@ const CreatersCard = (props: Props) => {
           {creaters && creaters.length === 0 && (
             <p>No creaters have still now</p>
           )}
-          <div className=" 800px:w-[90%] w-[95%] pt-[100px] m-auto">
+          <div className=" 800px:w-[90%] w-[95%] pt-[40px] m-auto">
           <div className= {`w-full h-[300px] `}>
               <div className=" w-full h-[96%] m-auto bg-gradient-to-r from-[#ffffff00] to-[#9292d33b] rounded-br-[100px] flex justify-between items-center max-400px:items-end rounded">
                 <h1

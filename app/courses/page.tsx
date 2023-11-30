@@ -65,7 +65,7 @@ const Page = (props: Props) => {
             setOpen={setOpen}
             activeItem={1}
           />
-          <div className="w-[95%] pt-[100px] 800px:w-[85%] m-auto min-h-screen h-auto">
+          <div className="w-[95%] pt-[40px] 800px:w-[85%] m-auto min-h-screen h-auto">
             <div className= {`w-full h-[300px] `}>
               <div className=" w-full h-[96%] m-auto bg-gradient-to-r from-[#ffffff00] to-[#9292d33b] rounded-br-[100px] flex justify-between items-center max-400px:items-end rounded">
                 <h1

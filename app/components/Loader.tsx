@@ -1,12 +1,12 @@
 import React from 'react'
-import "./Loader.css";
+import Lottie from 'lottie-react'
+import animation from "../assets/animation/Animation - 1699998893498.json";
+type Props = {}
 
-const Loader = () => {
+const Loader = (props: Props) => {
   return (
-    <div className=' w-full h-screen flex items-center justify-center'>
-      
-       <div className="loader"></div>
-     
+    <div className=' w-full h-screen flex justify-center items-center'>
+           <Lottie animationData={animation} loop={true} className='w-[400px] h-[400px] mx-auto'/>
     </div>
   )
 }

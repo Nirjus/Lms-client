@@ -58,7 +58,7 @@ const Page = ({ params }: any) => {
         activeItem={3}
       />
 
-      <div className=" w-full pt-[100px] min-h-screen h-auto">
+      <div className=" w-full pt-[40px] min-h-screen h-auto">
         {isLoading ? (
           <Loader />
         ) : (
@@ -128,15 +128,15 @@ const Page = ({ params }: any) => {
            {
             active === 1 && (
               <div className=" 800px:w-[70%] px-5 pb-2 w-full h-full text-black dark:text-white">
-              <h1 className=" text-[18px] px-10 font-Poppins font-[600] ">
+              <h1 className=" text-[18px] 1100px:text-[21px] 1500px:text-[25px] px-10 font-Poppins font-[600] ">
                 🌟 Meet Our Dedicated Educator: {creator?.name} 🌟
               </h1>
 
-              <h3 className=" text-[16px] px-5 font-Poppins font-[500] ">
+              <h3 className=" 800px:text-[16px] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500] ">
                 👨‍🏫 About Me:
               </h3>
 
-              <p className=" px-2 font-Josefin text-justify">
+              <p className=" px-2 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin text-justify">
                 Passionate and experienced educator at the forefront of ALASKA,
                 a leading LMS company. Specializing in programming, mathematics,
                 problem-solving, and a diverse range of science and
@@ -144,44 +144,44 @@ const Page = ({ params }: any) => {
                 Ive dedicated my career to shaping the minds of students and
                 fostering a love for learning.
               </p>
-              <h3 className="text-[16px] px-5 font-Poppins font-[500]">
+              <h3 className="800px:text-[16px] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500]">
                 🚀 Teaching Philosophy:
               </h3>
 
-              <p className=" px-2 font-Josefin text-justify">
+              <p className=" px-2 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin text-justify">
                 Embraces a dynamic and innovative approach to education.
                 Champions project-based teaching methods, ensuring students
                 engage deeply with the material. Believes in making learning a
                 practical and enjoyable experience, preparing students for
                 real-world challenges.
               </p>
-              <h3 className="text-[16px] px-5 font-Poppins font-[500]">
+              <h3 className="800px:text-[16px] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500]">
                 🌐 Subject Expertise:
               </h3>
 
-              <p className=" px-2 font-Josefin text-justify">
+              <p className=" px-2 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin text-justify">
                 Proficient in a variety of science and computer-related
                 subjects. Expertise spans programming languages, mathematical
                 concepts, and problem-solving strategies. Committed to providing
                 a well-rounded education that prepares students for success in
                 their chosen fields.
               </p>
-              <h3 className="text-[16px] px-5 font-Poppins font-[500]">
+              <h3 className="800px:text-[16px] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500]">
                 🌈 Success Stories:
               </h3>
 
-              <p className="px-2 font-Josefin  text-justify">
+              <p className="px-2 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin  text-justify">
                 Instrumental in guiding numerous students toward bright futures
                 and successful life paths. A track record of fostering academic
                 excellence and personal growth. Celebrates the achievements of
                 students as they excel in their educational and professional
                 journeys.
               </p>
-              <h3 className="text-[16px] px-5 font-Poppins font-[500]">
+              <h3 className="800px:text-[16px] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500]">
                 💼 Work Ethic:
               </h3>
 
-              <p className="px-2 font-Josefin  text-justify">
+              <p className="px-2 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin  text-justify">
                 Dedicated to the cause of education, working tirelessly
                 throughout the week. Strives to create a supportive and
                 inspiring learning environment for students. Committed to
@@ -189,7 +189,7 @@ const Page = ({ params }: any) => {
                 incorporating them into teaching methodologies.
               </p>
 
-              <p className="px-2 font-Josefin  text-justify ">
+              <p className="px-2 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin  text-justify ">
                 🌟 Join me on this educational journey, where knowledge meets
                 inspiration, and success is a shared achievement! 🚀
               </p>

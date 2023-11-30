@@ -51,7 +51,7 @@ const Profile: React.FC<Props> = ({ user }) => {
   return (
     <div className=" w-[85%] flex mx-auto ">
       <div
-        className={`w-[60px] 800px:w-[310px] h-[450px] dark:bg-slate-900 bg-slate-50 bg-opacity-90 border dark:border-[#ffffff1d] border-[#3939392e] dark:shadow-sm shadow-xl rounded-[5px] mt-[130px] mb-[80px] sticky
+        className={`w-[60px] 800px:w-[310px] h-[450px] dark:bg-slate-900 bg-slate-50 bg-opacity-90 border dark:border-[#ffffff1d] border-[#3939392e] dark:shadow-sm shadow-xl rounded-[5px] mt-[100px] mb-[80px] sticky
         ${scroll ? " top-[120px]" : " top-[30px]"} left-[30px]`}
       >
         <SideBarProfile
@@ -63,17 +63,17 @@ const Profile: React.FC<Props> = ({ user }) => {
         />
       </div>
       {active === 1 && (
-        <div className=" w-full h-full bg-transparent mt-[130px]">
+        <div className=" w-full h-full bg-transparent mt-[100px]">
           <ProfileInfo avatar={avatar} user={user} />
         </div>
       )}
       {active === 2 && (
-        <div className=" w-full h-full bg-transparent mt-[130px]">
+        <div className=" w-full h-full bg-transparent mt-[100px]">
           <ChangePassword />
         </div>
       )}
       {active === 3 && (
-        <div className="w-full pl-7 px-2 800px:px-10 800px:pl-8 mt-[130px]">
+        <div className="w-full pl-7 px-2 800px:px-10 800px:pl-8 mt-[100px]">
           <div className="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-2 lg:gap-[25px] 1500px:grid-cols-3 1500px:gap-[35px] mb-12 border-0">
             {courses &&
               courses.map((item: any, index: number) => (

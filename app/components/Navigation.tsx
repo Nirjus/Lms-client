@@ -83,41 +83,28 @@ const Navigation: React.FC<Props> = ({ activeItem, open, setOpen, route, setRout
   };
  
   return (
-    <div
-      className={`items-center p-2 flex !w-[95%] mx-auto bg-[#f6f6f6e4] dark:bg-[#131322f2] rounded-[20px] backdrop-blur-[4px] shadow-xl dark:shadow-lg dark:shadow-[#000000bc] `}
-    >
-      <div className="flex-1">
-        <Link className=" text-[30px] pl-3 hover:text-[#2a7fe0] dark:hover:text-[#2a7fe0] dark:text-white text-[#151515] font-[600]" href={"/"}>
-          ALASKA
-        </Link>
-      </div>
-      <div className="flex gap-2">
-        <div className="hidden 800px:flex">
-          {navItemsData &&
-            navItemsData.map((i, index) => (
-              <Link
-                href={i.url}
-                key={index}
-                passHref
-                className={` p-2 m-1`}
-              >
-                <span
-                  className={`${
-                    activeItem === index
-                      ? " dark:text-[#37a39a] text-[crimson]"
-                      : "dark:text-white text-black"
-                  } text-[17px] px-3 font-Poppins font-[400] hover:underline`}
-                >
-                  {i.name}
-                </span>
-              </Link>
-            ))}
+    <>
+    <div className=" my-auto mx-[70px] hidden 800px:block">
+     
+      <div className=" flex flex-row gap-7">
+          {navItemsData.map((item: any, index: number) => (
+            <div
+              className={` p-1 font-Poppins ${
+                activeItem === index
+                  ? " text-red-500 dark:text-[cyan] underline "
+                  : " text-black dark:text-white"
+              }`}
+              key={index}
+            >
+              <Link href={item.url}>{item.name}</Link>
+            </div>
+          ))}
         </div>
-
-        <div className=" pt-1">
-          <ThemeSwitcher />
-        </div>
-        <div className=" max-800px:hidden">
+     </div>
+        <div className=" mx-2">
+         <ThemeSwitcher />
+         </div>
+        <div className=" ml-2 mr-4 max-800px:hidden">
         {
               user ? (
                 <Link href={"/profile"}>
@@ -135,16 +122,16 @@ const Navigation: React.FC<Props> = ({ activeItem, open, setOpen, route, setRout
               )
              }
         </div>
-        <div className=" 800px:hidden mx-1">
+        <div className=" 800px:hidden block mx-5">
           <HiOutlineMenuAlt3
             size={42}
             className=" cursor-pointer text-black dark:text-white"
             onClick={() => setOpenSidebar(true)}
           />
-        </div>
+        
         {openSidebar && (
           <div
-            className=" fixed w-full h-screen top-0 left-0 z-[9999] bg-[#00000027] "
+          className="fixed top-0 right-0 z-[99999] h-screen w-full bg-[#00000036]"
             onClick={handleClose}
             id="screen"
           >
@@ -206,7 +193,7 @@ const Navigation: React.FC<Props> = ({ activeItem, open, setOpen, route, setRout
             </div>
           </div>
         )}
-      </div>
+       </div>
       {
          route === "Login" && (
           <>
@@ -277,7 +264,7 @@ const Navigation: React.FC<Props> = ({ activeItem, open, setOpen, route, setRout
          )
       }
 
-    </div>
+    </>
   );
 };
 

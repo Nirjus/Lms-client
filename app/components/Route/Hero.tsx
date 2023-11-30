@@ -27,23 +27,25 @@ const Hero = (props: Props) => {
     isLoading ? (
       <Loader />
     ) : (
-      <div className="w-full min-h-screen h-auto 1000px:flex items-center">
-      <div className="hero_animation absolute 1000px:w-[600px] 1000px:h-[600px] top-[100px] max-800px:w-[300px] max-800px:h-[300px] max-800px:left-[0px] max-800px:top-[70px] left-[50px] "></div>
-      <div className=" w-full 1000px:w-[50%] pl-10 flex justify-center items-center pt-[80px] ">
+      <div className="w-full min-h-[95vh] h-auto 1000px:flex items-center">
+     
+     <div className=" w-full 1000px:w-[50%] 800px:mb-[100px] m-auto pl-10 flex justify-center items-center pt-[80px] bg-gradient-to-b dark:from-[#92929200] from-[#92929200] dark:via-[#0000000f] via-[#a1a1a10f] dark:to-[#9424d5cb] to-[#24d559e3] rounded-b-[40%] overflow-hidden">
+
         <Image
-          src={data?.layout?.banner?.image?.url}
+          src={require("../../assets/images/3d Girl1.png")}
           width={1000}
           height={1000}
           alt=""
-          className="object-contain 1100px:max-w-[90%] w-[90%] 1500px:max-w-[85%] h-auto z-[5] "
+          className="object-contain 1100px:max-w-[90%] w-[90%] 1500px:max-w-[85%] h-auto "
         />
       </div>
-      <div className="1000px:w-[50%] w-full flex flex-col items-center 1000px:mt-[0px] text-center 1000px:text-left mt-[80px] 800px:pt-[100px]">
-        <h2 className="dark:text-white text-[#000000c7] text-[30px] px-3 1000px:text-[60px] font-[600] text-center font-Josefin py-2 1000px:leading-[75px]">
+      <div className="1000px:w-[45%] 800px:mb-[100px] w-full flex flex-col items-center 1000px:mt-[0px] text-center 1000px:text-left mt-[80px] 800px:pt-[100px]">
+        <h2 className="dark:text-white text-[#000000c7] text-[30px] px-3 1000px:text-[60px] font-[600] max-800px:text-center font-Josefin py-2 1000px:leading-[75px]">
          {data?.layout?.banner?.title}
         </h2>
         <br />
-        <p className="dark:text-[#edfff4] text-[#000000ac] font-Josefin font-[600] text-[18px] 1500px:!w-[55%] 1100px:!w-[78%]">
+        <p className="dark:text-[#edfff4e5] text-[#000000ac] font-Josefin font-[600] text-[18px] 1500px:w-[85%] 1100px:w-[80%] w-[90%]">
+
          {data?.layout?.banner?.subtitle}
         </p>
         <br />
@@ -56,7 +58,7 @@ const Hero = (props: Props) => {
             onChange={(e) => setSearch(e.target.value)}
             className=" bg-[#bebebe] border dark:border-none dark:bg-[#575757] dark:placeholder:text-[#ffffffdd] placeholder:text-white rounded-l-[5px] p-2 w-full h-full outline-none text-[#00000094] dark:text-[#ffffffe6] text-[20px] font-[600] font-Josefin "
           />
-          <div className=" flex items-center justify-center w-[50px] cursor-pointer h-[50px] right-0 top-0 bg-[#39c1f3] rounded-r-[5px]"
+          <div className=" flex items-center justify-center w-[50px] cursor-pointer h-[50px] right-0 top-0 bg-[#39c1f3] active:bg-[#119fd2] rounded-r-[5px]"
           onClick={handleSearch}
           >
             <BiSearch className="text-white" size={30} />
