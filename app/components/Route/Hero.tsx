@@ -32,7 +32,7 @@ const Hero = (props: Props) => {
      <div className=" w-full 1000px:w-[50%] 800px:mb-[100px] m-auto pl-10 flex justify-center items-center pt-[80px] bg-gradient-to-b dark:from-[#92929200] from-[#92929200] dark:via-[#0000000f] via-[#a1a1a10f] dark:to-[#9424d5cb] to-[#24d559e3] rounded-b-[40%] overflow-hidden">
 
         <Image
-          src={require("../../assets/images/3d Girl1.png")}
+          src={data?.layout?.banner?.image?.url}
           width={1000}
           height={1000}
           alt=""
