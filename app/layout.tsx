@@ -11,6 +11,7 @@ import Loader from  "./components/Loader";
 import { ThemeProvider } from 'next-themes';
 import socketIO from "socket.io-client";
 import { useEffect } from 'react';
+import CrispProvider from './components/crisp/crisp-provider';
 const ENDPOINT = process.env.NEXT_PUBLIC_SOCKET_SERVER_URI || "";
 const socketId = socketIO(ENDPOINT, {transports: ["websocket"]});
 
@@ -26,6 +27,7 @@ export default function RootLayout({
  
   return (
     <html lang="en" suppressHydrationWarning={true}>
+      <CrispProvider />
       <body className={`${poppins.variable} ${josefin.variable} !bg-white bg-no-repeat dark:bg-gradient-to-b dark:from-gray-900 dark:to-black duration-300`} >
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <Providers>
