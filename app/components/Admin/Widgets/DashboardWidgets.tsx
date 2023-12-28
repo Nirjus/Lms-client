@@ -94,7 +94,7 @@ const DashboardWidgets: FC<Props> = ({ open }) => {
           <UserAnalytics isDashboard={true} />
         </div>
         <div className="pt-[80px] pr-8">
-          <div className="w-full dark:bg-[#111C43] rounded-sm shadow">
+          <div className="w-full bg-[#aff6c6] dark:bg-[#11431f] rounded-sm shadow">
             <div className="flex items-center p-5 justify-between">
               <div className="">
                 <BiBorderLeft className="dark:text-[#45CBA0] text-[#000] text-[30px]" />
@@ -117,14 +117,14 @@ const DashboardWidgets: FC<Props> = ({ open }) => {
               </div>
             </div>
           </div>
-          <div className="w-full dark:bg-[#111C43] rounded-sm shadow my-8">
+          <div className="w-full bg-[#aec8ed] dark:bg-[#111C43] rounded-sm shadow my-8">
             <div className="flex items-center p-5 justify-between">
               <div className="">
-                <PiUsersFourLight className="dark:text-[#45CBA0] text-[#000] text-[30px]" />
+                <PiUsersFourLight className="dark:text-[#6572d3] text-[#000] text-[30px]" />
                 <h5 className="pt-2 font-Poppins dark:text-[#fff] text-black text-[20px]">
                   {userComparePercentage?.currentMonth}
                 </h5>
-                <h5 className="py-2 font-Poppins dark:text-[#45CBA0] text-black text-[20px] font-[400]">
+                <h5 className="py-2 font-Poppins dark:text-[#6572d3] text-black text-[20px] font-[400]">
                   New Users
                 </h5>
               </div>

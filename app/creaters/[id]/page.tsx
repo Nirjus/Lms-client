@@ -12,6 +12,9 @@ import Link from "next/link";
 import { GoArrowUpRight } from "react-icons/go";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import CourseCard from "@/app/components/Course/CourseCard";
+import Heading from "@/app/utils/Heading";
+import {RxCross1} from "react-icons/rx";
+
 type Props = {};
 
 const Page = ({ params }: any) => {
@@ -50,6 +53,7 @@ const Page = ({ params }: any) => {
 
   return (
     <div className="">
+      <Heading title={`${creator?.name}-Creator Profile`} description="Creators profile" keyword=" Creators profile, Teachers" />
       <Header
         open={open}
         setOpen={setOpen}
@@ -58,7 +62,7 @@ const Page = ({ params }: any) => {
         activeItem={3}
       />
 
-      <div className=" w-full pt-[40px] min-h-screen h-auto">
+      <div className=" w-full mt-[100px] min-h-screen h-auto">
         {isLoading ? (
           <Loader />
         ) : (
@@ -127,16 +131,16 @@ const Page = ({ params }: any) => {
             </div>
            {
             active === 1 && (
-              <div className=" 800px:w-[70%] px-5 pb-2 w-full h-full text-black dark:text-white">
-              <h1 className=" text-[18px] 1100px:text-[21px] 1500px:text-[25px] px-10 font-Poppins font-[600] ">
+              <div className=" 800px:w-[70%] px-5 pb-2 w-full h-full ">
+              <h1 className=" text-[18px] text-[#e23b65] 1100px:text-[21px] 1500px:text-[25px] px-10 font-Poppins font-[600] ">
                 🌟 Meet Our Dedicated Educator: {creator?.name} 🌟
               </h1>
 
-              <h3 className=" 800px:text-[16px] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500] ">
+              <h3 className=" 800px:text-[16px] text-[#7f44e3] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500] ">
                 👨‍🏫 About Me:
               </h3>
 
-              <p className=" px-2 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin text-justify">
+              <p className=" px-2 800px:text-[14px] 1100px:text-[17px] text-black dark:text-white 1500px:text-[20px] font-Josefin text-justify">
                 Passionate and experienced educator at the forefront of ALASKA,
                 a leading LMS company. Specializing in programming, mathematics,
                 problem-solving, and a diverse range of science and
@@ -144,44 +148,44 @@ const Page = ({ params }: any) => {
                 Ive dedicated my career to shaping the minds of students and
                 fostering a love for learning.
               </p>
-              <h3 className="800px:text-[16px] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500]">
+              <h3 className="800px:text-[16px] text-[#7f44e3] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500]">
                 🚀 Teaching Philosophy:
               </h3>
 
-              <p className=" px-2 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin text-justify">
+              <p className=" px-2 text-black dark:text-white 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin text-justify">
                 Embraces a dynamic and innovative approach to education.
                 Champions project-based teaching methods, ensuring students
                 engage deeply with the material. Believes in making learning a
                 practical and enjoyable experience, preparing students for
                 real-world challenges.
               </p>
-              <h3 className="800px:text-[16px] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500]">
+              <h3 className="800px:text-[16px] text-[#7f44e3] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500]">
                 🌐 Subject Expertise:
               </h3>
 
-              <p className=" px-2 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin text-justify">
+              <p className=" text-black dark:text-white px-2 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin text-justify">
                 Proficient in a variety of science and computer-related
                 subjects. Expertise spans programming languages, mathematical
                 concepts, and problem-solving strategies. Committed to providing
                 a well-rounded education that prepares students for success in
                 their chosen fields.
               </p>
-              <h3 className="800px:text-[16px] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500]">
+              <h3 className="800px:text-[16px] text-[#7f44e3] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500]">
                 🌈 Success Stories:
               </h3>
 
-              <p className="px-2 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin  text-justify">
+              <p className="px-2 text-black dark:text-white 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin  text-justify">
                 Instrumental in guiding numerous students toward bright futures
                 and successful life paths. A track record of fostering academic
                 excellence and personal growth. Celebrates the achievements of
                 students as they excel in their educational and professional
                 journeys.
               </p>
-              <h3 className="800px:text-[16px] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500]">
+              <h3 className="800px:text-[16px] text-[#7f44e3] 1100px:text-[19px] 1500px:text-[22px] px-5 font-Poppins font-[500]">
                 💼 Work Ethic:
               </h3>
 
-              <p className="px-2 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin  text-justify">
+              <p className="px-2 text-black dark:text-white 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin  text-justify">
                 Dedicated to the cause of education, working tirelessly
                 throughout the week. Strives to create a supportive and
                 inspiring learning environment for students. Committed to
@@ -189,7 +193,7 @@ const Page = ({ params }: any) => {
                 incorporating them into teaching methodologies.
               </p>
 
-              <p className="px-2 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin  text-justify ">
+              <p className="px-2 text-[#7f44e3] 800px:text-[14px] 1100px:text-[17px] 1500px:text-[20px] font-Josefin  text-justify ">
                 🌟 Join me on this educational journey, where knowledge meets
                 inspiration, and success is a shared achievement! 🚀
               </p>
@@ -213,8 +217,9 @@ const Page = ({ params }: any) => {
               )
              }
             {popup && (
-              <div className=" w-full h-screen fixed top-0 left-0 bg-[#00000034]">
-                <div className=" cursor-pointer h-[80vh] w-auto absolute top-[55%] left-[50%] -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-[#171717] rounded-[8px] shadow p-4 outline-none">
+              <div className=" w-full h-screen z-[9999] fixed top-0 left-0 bg-[#00000034]" >
+                <div className=" fixed top-[55%] left-[50%] -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-[#171717] rounded-[8px] shadow p-2">
+                  <div className=" flex justify-end"><RxCross1 className=" text-black cursor-pointer dark:text-white" size={25} onClick={() => setPopup(false)} /></div>
                   <Image
                     src={
                       creator?.avatar
@@ -225,9 +230,9 @@ const Page = ({ params }: any) => {
                     }
                     width={500}
                     height={500}
-                    className=" w-full h-full rounded-[10px] border-2 border-[#9f9f9f51]"
+                    className=" 1000px:w-[600px] 1000px:h-[600px] 800px:w-[400px] 800px:h-[450px] w-[300px] h-[300px] object-cover rounded-[10px] border-2 border-[#9f9f9f51]"
                     alt="avatar"
-                    onClick={() => setPopup(false)}
+                    
                   />
                 </div>
               </div>

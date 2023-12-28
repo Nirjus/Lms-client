@@ -327,3 +327,46 @@ input[type="number"] {
     backface-visibility: hidden;
     opacity: 1;
 }
+
+.animationNavebar{
+    transition: all;
+    animation: upToDown 500ms ease-in-out;
+  }
+  @keyframes upToDown{
+    0%{
+      top: 0px;
+    }
+    50%{
+      top: -80px;
+    }
+    100%{
+      top: 0px;
+    }
+  }
+
+  .sideBaranimationRightToleft{
+    transition: all;
+    animation: rightToleft 500ms ease-in-out ;
+  }
+  
+  @keyframes rightToleft{
+    0%{
+      transform: translateX(100%);
+    }
+    100%{
+      transform: translateX(0%);
+    }
+  }
+  
+  .sideBaranimationLeftToRight{
+    transition: all;
+    animation: leftToRight 500ms ease-in-out;
+  }
+  @keyframes leftToRight{
+    0%{
+      transform: translateX(0%);
+    }
+    100%{
+      transform: translateX(100%);
+    }
+  }

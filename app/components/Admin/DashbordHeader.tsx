@@ -52,7 +52,7 @@ const handleNotificationStatusChange = async (id:string) => {
 }
 
   return (
-    <div className="w-full flex items-center justify-end p-6 fixed top-5 right-0">
+    <div className="w-full z-[9999] flex items-center justify-end p-6 fixed top-0 right-0">
       <ThemeSwitcher />
       <div
         className="relative cursor-pointer m-2"

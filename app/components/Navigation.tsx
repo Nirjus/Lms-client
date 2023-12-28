@@ -48,6 +48,7 @@ const Navigation: React.FC<Props> = ({ activeItem, open, setOpen, route, setRout
   const [openSidebar, setOpenSidebar] = useState(false);
   const {user} = useSelector((state:any) => state.auth);
   const {data} = useSession();
+  const [reverse, setReverse] = useState(false);
   const [socialAuth,{isSuccess, error, data:userData}] = useSocialAuthMutation();
   // const [logout, setLogout] = useState(false);
   // const {} = useLogOutQuery(undefined, {
@@ -78,7 +79,10 @@ const Navigation: React.FC<Props> = ({ activeItem, open, setOpen, route, setRout
   
   const handleClose = (e: any) => {
     if (e.target.id === "screen") {
-      setOpenSidebar(false);
+       setReverse(true);
+       setTimeout(function(){
+        setOpenSidebar(false);
+       },460)
     }
   };
  
@@ -126,16 +130,16 @@ const Navigation: React.FC<Props> = ({ activeItem, open, setOpen, route, setRout
           <HiOutlineMenuAlt3
             size={42}
             className=" cursor-pointer text-black dark:text-white"
-            onClick={() => setOpenSidebar(true)}
+            onClick={() => {setOpenSidebar(true), setReverse(false)}}
           />
         
         {openSidebar && (
           <div
-          className="fixed top-0 right-0 z-[99999] h-screen w-full bg-[#00000036]"
+          className="fixed top-0 right-0 h-screen w-full bg-[#00000036]"
             onClick={handleClose}
             id="screen"
           >
-            <div className="w-[70%] fixed h-screen bg-white dark:bg-[#0f0f14] dark:bg-opacity-[0.97] transition-all duration-300  top-0 right-0">
+            <div className={`sideBaranimationRightToleft ${reverse && "sideBaranimationLeftToRight"} w-[70%] z-[99999] fixed h-screen bg-white dark:bg-[#0f0f14] dark:bg-opacity-[0.97] transition-all duration-300  top-0 right-0`}>
             <div className=" flex justify-center items-center my-5">
         <Link className=" text-[30px] pl-3 hover:text-[#2a7fe0] dark:hover:text-[#2a7fe0] dark:text-white text-[#151515] font-[600]" href={"/"}>
           ALASKA

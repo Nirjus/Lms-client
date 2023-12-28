@@ -28,8 +28,8 @@ const Header:React.FC<Props> = ({activeItem, open, setOpen, route, setRoute }) =
     <div className="w-full relative">
       <div
         className={`${
-          active ? "fixed top-0 left-0 shadow-xl" : " dark:shadow"
-        } w-full z-[80] h-[80px] border-b-2 border-b-[#86868678] backdrop-blur dark:bg-[#16161f98] bg-[#e8e6e695] transition-all duration-500`}
+          active ? " animationNavebar shadow-xl" : " dark:shadow"
+        } fixed top-0 left-0 w-full z-[80] h-[80px] border-b-2 border-b-[#86868678] backdrop-blur dark:bg-[#16161f98] bg-[#e8e6e695] transition-all duration-500`}
       >
         <div className=" flex w-full h-full flex-row items-center justify-between ">
           <div className="  mx-3 text-black dark:text-white bg-gradient-to-r from-[#5c5b5b7a] dark:to-[#6c6c6c19] to-[#6c6c6c28] w-[130px] text-center p-1 rounded cursor-pointer">
