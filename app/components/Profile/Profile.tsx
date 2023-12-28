@@ -82,7 +82,7 @@ const Profile: React.FC<Props> = ({ user }) => {
           </div>
           {courses.length === 0 && (
             <h1 className=" text-center text-[18px] font-Poppins">
-              You don&apost have any purchased courses!
+              You dont have any purchased courses!
             </h1>
           )}
         </div>

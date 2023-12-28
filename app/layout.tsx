@@ -24,7 +24,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
- 
+  useEffect(() => {
+    socketId.on("connection", () => {});
+ },[])
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <CrispProvider />
@@ -32,7 +34,7 @@ export default function RootLayout({
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <Providers>
           <SessionProvider>
-          <Custom>{children}</Custom>
+          {children}
          <ToastContainer 
           position="top-center"
           theme="colored"
@@ -45,17 +47,15 @@ export default function RootLayout({
   )
 }
 
-const Custom: React.FC<{children: React.ReactNode}> = ({children}) => {
- const {isLoading} = useLoadUserQuery({});
+// const Custom: React.FC<{children: React.ReactNode}> = ({children}) => {
+//  const {isLoading} = useLoadUserQuery({});
 
- useEffect(() => {
-    socketId.on("connection", () => {});
- },[])
-  return (
-    <>
-    {
-      isLoading ? <Loader /> : <>{children}</>
-    }
-    </>
-  )
-}
+ 
+//   return (
+//     <>
+//     {
+//       isLoading ? <Loader /> : <>{children}</>
+//     }
+//     </>
+//   )
+// }
