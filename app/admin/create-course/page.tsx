@@ -4,11 +4,13 @@ import AdminSidebar from "../../components/Admin/sidebar/AdminSidebar";
 import Heading from '@/app/utils/Heading';
 import CreateCourse from "../../components/Admin/CreateCourse";
 import DashboardHeader from '@/app/components/Admin/DashbordHeader';
+import AdminProtected from '@/app/hooks/adminProtected';
 type Props = {}
 
 const page = (props: Props) => {
   return (
     <div>
+      <AdminProtected>
         <Heading 
           title='ALASKA E-learning-Admin'
           description="One stop e-learning platform" keyword="Programming,Science,Sanatan dharma"
@@ -22,6 +24,7 @@ const page = (props: Props) => {
             <CreateCourse />
         </div>
       </div>
+      </AdminProtected>
     </div>
   )
 }
