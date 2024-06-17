@@ -5,6 +5,7 @@ import { BiSolidPencil } from "react-icons/bi";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { BsLink45Deg } from "react-icons/bs";
 import { toast } from "react-toastify";
+import { RxCross1 } from "react-icons/rx";
 
 type Props = {
   active: number;
@@ -90,17 +91,17 @@ const CourseContent: FC<Props> = ({
       courseContentData[courseContentData.length - 1].links[0].url === ""
     ) {
       toast.error("Please fill all the fields first!");
-    }else{
-        setActiveSection(activeSection + 1);
-        const newContent = {
-            videoUrl: "",
-            title: "",
-            videoLength: "",
-            description: "",
-            videoSection: `Untitled Section ${activeSection}`,
-            links: [{ title: "", url: "" }],
-          };
-          setCourseContentData([...courseContentData, newContent]);
+    } else {
+      setActiveSection(activeSection + 1);
+      const newContent = {
+        videoUrl: "",
+        title: "",
+        videoLength: "",
+        description: "",
+        videoSection: `Untitled Section ${activeSection}`,
+        links: [{ title: "", url: "" }],
+      };
+      setCourseContentData([...courseContentData, newContent]);
     }
   };
   const prevButton = () => {
@@ -118,6 +119,22 @@ const CourseContent: FC<Props> = ({
     } else {
       setActive(active + 1);
       handleCourseSubmit();
+    }
+  };
+  const handleVideoUpload = (e: any, index: number) => {
+   
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          const updateData = [...courseContentData];
+          updateData[index].videoUrl = reader.result;
+          setCourseContentData(updateData);
+        }
+      };
+      reader.readAsDataURL(file);
     }
   };
   return (
@@ -216,20 +233,39 @@ const CourseContent: FC<Props> = ({
                       />
                     </div>
                     <div className=" my-3">
-                      <label htmlFor="" className={style.label}>
-                        Video Url
+                      <label
+                        htmlFor={`video-input-${index}`}
+                        className={`w-full min-h-[10vh] dark:border-white border-[#00000026] p-3 border flex items-center justify-center rounded-[5px] active:bg-blue-500 `}
+                      >
+                        <input
+                          type="file"
+                          id={`video-input-${index}`}
+                          accept="video/*"
+                          className=" hidden"
+                          onChange={(e) => handleVideoUpload(e, index)} />
+                        {item?.videoUrl ? (
+                          <div className=" w-full">
+                            <RxCross1
+                              onClick={() => {
+                                const updateData = [...courseContentData];
+                                const updatedItem = { ...updateData[index], videoUrl: ""};
+                                updateData[index] = updatedItem;
+                                setCourseContentData(updateData);
+                              }}
+                              className=" mb-2 cursor-pointer"
+                            />
+                            <video
+                              src={item?.videoUrl}
+                              className="w-full aspect-video"
+                              controls
+                            ></video>
+                          </div>
+                        ) : (
+                          <span className=" text-black dark:text-white">
+                            Click here for browse the video for chapter video
+                          </span>
+                        )}
                       </label>
-                      <input
-                        type="text"
-                        placeholder="sdfsd5464"
-                        className={style.input}
-                        value={item.videoUrl}
-                        onChange={(e) => {
-                          const updateData = [...courseContentData];
-                          updateData[index].videoUrl = e.target.value;
-                          setCourseContentData(updateData);
-                        }}
-                      />
                     </div>
                     <div className=" my-3">
                       <label htmlFor="" className={style.label}>
@@ -345,7 +381,10 @@ const CourseContent: FC<Props> = ({
       </form>
       <br />
       <div className=" w-full flex items-center justify-between">
-        <div className={`${style.button} !w-[250px]`} onClick={() => prevButton()}>
+        <div
+          className={`${style.button} !w-[250px]`}
+          onClick={() => prevButton()}
+        >
           Prev
         </div>
         <div

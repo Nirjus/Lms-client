@@ -85,7 +85,7 @@ const Sidebar = () => {
           color: `${theme !== "dark" && "#000"}`,
         },
       }}
-      className="!bg-white dark:bg-[#111C43]"
+      className="!bg-white dark:bg-[#111C43] z-[99999]"
     >
       <ProSidebar
         collapsed={isCollapsed}

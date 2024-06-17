@@ -213,7 +213,7 @@ const CourseDetails = ({ data, clientSecret, stripePromise, setRoute, setOpen:op
         </div>
         <div className="w-full 800px:w-[35%] relative">
           <div className=" sticky top-[100px] left-0 w-full ">
-            <CoursePlayer videoUrl={data?.demoUrl} title={data?.title} />
+            <CoursePlayer videoUrl={data?.demoUrl?.url} title={data?.title} />
             <div className="flex items-center">
               <h1 className=" pt-5 text-[25px] text-black dark:text-white">
                 {data.price === 0 ? "Free" : data.price + "$"}

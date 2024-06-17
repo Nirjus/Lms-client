@@ -21,8 +21,7 @@ const CourseCard: FC<Props> = ({ item, isProfile }) => {
           width={500}
           height={300}
           alt="thumbnail"
-          objectFit="contain"
-          className=" rounded w-full hover:scale-105 duration-500"
+          className=" rounded w-full object-cover hover:scale-105 aspect-video duration-500"
         />
       </div>
         <br />

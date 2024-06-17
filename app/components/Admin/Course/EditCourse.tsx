@@ -44,13 +44,25 @@ const EditCourse:FC<Props> = ({id}) => {
             estimatedPrice:editCourse.estimatedPrice,
             tags:editCourse.tags,
             level:editCourse.level,
-            demoUrl: editCourse.demoUrl,
+            demoUrl: editCourse.demoUrl?.url,
             thumbnail: editCourse?.thumbnail?.url,
         })
         setBenefits(editCourse.benefits);
         setPrerequisites(editCourse.prerequisites);
-        setCourseContent(editCourse.courseData);
-      }
+        const chapterArray: any = [];
+        editCourse.courseData.map((item: any) => 
+            chapterArray.push({
+                videoUrl: item?.videoUrl?.url,
+                title: item?.title,
+                description: item?.description,
+                videoSection: item?.videoSection,
+                videoLength: item?.videoLength,
+                links: item?.links,
+                suggestion: item?.suggestion,
+            })
+        )
+        setCourseContent(chapterArray)
+    }
     },[editCourse])
 
     const [courseInfo, setCourseInfo] = useState({

@@ -16,7 +16,7 @@ const page = (props: Props) => {
       description="One stop e-learning platform" keyword="Programming,Science,Sanatan dharma"
      />
     <div className="flex min-h-screen h-auto">
-                 <div className="w-1/5 1500px:w-[16%]">
+                 <div className="w-1/5 1500px:w-[16%] z-[99999]">
                      <AdminSidebar />
                  </div>
                  <div className="w-[85%]">

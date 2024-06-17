@@ -207,7 +207,7 @@ const CourseContentMedia = ({
     <div className=" w-[95%] 800px:w-[86%] py-4 m-auto">
       <CoursePlayer
         title={data[activeVideo]?.title}
-        videoUrl={data[activeVideo]?.videoUrl}
+        videoUrl={data[activeVideo]?.videoUrl?.url}
       />
       <div className="w-full flex items-center justify-between my-3">
         <div
